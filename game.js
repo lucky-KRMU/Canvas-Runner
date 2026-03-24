@@ -2,8 +2,11 @@ console.log("test!")
 
 let player = document.querySelector("#player");
 let body = document.querySelector("body");
+let board = document.querySelector("#container");
 
 let playerInitialPos = 2;   // To get the initial position of the player and get and update the current value of the player
+
+let obstacleArray = [];
 
 body.addEventListener("keydown", (e) => {
     // ArrowRight, ArrowLeft, ArrowUp, ArrowDown
@@ -35,3 +38,16 @@ body.addEventListener("keydown", (e) => {
         }, 200);
     }
 })
+
+
+// Game Loop
+setInterval(()=>{
+
+    // Loop to spawn the obstacles
+    setTimeout(()=>{
+        let obstacle = document.createElement("div");
+        obstacle.className = "obstacle";
+        obstacleArray.push(obstacle);
+        board.appendChild(obstacle)
+    }, 1000)
+}, 1000)
