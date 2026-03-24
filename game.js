@@ -21,6 +21,17 @@ body.addEventListener("keydown", (e) => {
         playerInitialPos += 1;
         player.style.gridColumn = playerInitialPos;
         console.log(player.style.gridColumn)
+
+    }
+
+    //Making the element Jump
+    if (e.key === "ArrowUp") {
+        // console.log("j")
+        player.style.transform = "translateZ(10vmin)"; // to make it jump
         
+        //To make the element revert back to it's original position
+        setTimeout(() => {
+            player.style.transform = "";
+        }, 200);
     }
 })
