@@ -13,6 +13,7 @@ body{
     justify-content: center;
     align-items: center;
     perspective: 1000px;
+    /* perspective defines how far is the object from the viewer (eyes) */
 }
 /* #board{
     perspective: 1000px;
@@ -36,6 +37,7 @@ body{
     width: var(--player-size);
     background: #000;
     margin: auto;
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 6;
+    transition-duration: 200ms;
 }
