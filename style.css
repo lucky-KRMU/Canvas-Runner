@@ -34,6 +34,7 @@ body {
     box-shadow: 2px 2px 2px black;
     transform: rotateX(60deg);
     transform-style: preserve-3d;
+    overflow: hidden;
 }
 
 #player {
@@ -49,8 +50,9 @@ body {
 .obstacle {
     height: var(--player-size);
     width: var(--player-size);
-    background: #000;
+    background: #bb3b3b;
     margin: auto;
     grid-row: 1;
     transition-duration: 200ms;
+    border: 2px solid green;
 }

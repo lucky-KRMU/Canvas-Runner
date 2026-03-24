@@ -7,6 +7,7 @@ let board = document.querySelector("#container");
 let playerInitialPos = 2;   // To get the initial position of the player and get and update the current value of the player
 
 let obstacleArray = [];
+let obstaclePositionArray = [];
 
 body.addEventListener("keydown", (e) => {
     // ArrowRight, ArrowLeft, ArrowUp, ArrowDown
@@ -39,15 +40,67 @@ body.addEventListener("keydown", (e) => {
     }
 })
 
+// Function to move the obstacle
+function moveObs(){
+    obstacleArray.forEach((obstacle, index)=>{
+        obstaclePositionArray[index] += 1
+        obstacle.style.transform = `translateY(${obstaclePositionArray[index]}vh)`
+    })
+}
+
+// Function to make the obstacles
+function makeObs () {
+    setTimeout(()=>{
+
+        let randObsGridCol = Math.ceil( Math.random() * 3 );
+
+        let obstacle = document.createElement("div");
+        obstacle.className = "obstacle";
+        obstacle.style.gridColumn = randObsGridCol;
+        obstaclePositionArray.push(0);
+        obstacleArray.push(obstacle);
+        board.appendChild(obstacle)
+
+    }, 2000)
+}
+
+// Function to remove the obstacles outisde of the board
+function removeObs () {
+    obstacleArray.forEach((obstacle, index)=>{
+        if (obstacle.style.transform === "translateY(71vh)"){
+            board.removeChild(obstacle);
+            obstaclePositionArray.splice(index, 1);
+            obstacleArray.splice(index, 1);
+        }
+    })
+}
 
 // Game Loop
 setInterval(()=>{
 
     // Loop to spawn the obstacles
-    setTimeout(()=>{
-        let obstacle = document.createElement("div");
-        obstacle.className = "obstacle";
-        obstacleArray.push(obstacle);
-        board.appendChild(obstacle)
-    }, 1000)
-}, 1000)
+    makeObs()
+
+    // obstacleArray.forEach((obstacle, index) => {
+        // obstacle.style.gridRow += 1;
+
+        // obstacle.style.transform = "translateX(10px)"
+
+        // if (obstacle.style.gridRow > 6) {
+        //     board.removeChild(obstacle);
+        //     obstacleArray.splice(index, 1);
+        // }
+    // })
+    
+    // obstacleArray.forEach((obstacle, index) => {
+    //     if (obstacle.style.gridRow > 6) {
+    //         board.removeChild(obstacle);
+    //         obstacleArray.splice(index, 1);
+    //     }
+    // })
+
+    moveObs()
+
+    removeObs()
+
+}, 100)
