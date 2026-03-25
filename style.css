@@ -27,14 +27,13 @@ body {
 #container {
     height: 70%;
     width: 70%;
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr); */
     border: 2px solid black;
     box-shadow: 2px 2px 2px black;
     transform: rotateX(60deg);
     transform-style: preserve-3d;
-    overflow: hidden;
 }
 
 #player {
