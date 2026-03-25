@@ -63,6 +63,15 @@ body {
     border: 2px solid green;
 }
 
+#highScore {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    font-size: 3vmin;
+    font-weight: 900;
+    font-family: datatype, 'Courier New', Courier, monospace;
+    color: blue;
+}
 #score {
     position: absolute;
     top: 10%;

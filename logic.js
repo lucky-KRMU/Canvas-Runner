@@ -5,6 +5,7 @@ let body = document.querySelector("body")
 let board = document.querySelector("#container");
 let player = document.querySelector("#player");
 let scoreTag = document.getElementById("score");
+let highScore = document.querySelector("#highScore");
 
 // Obstacle Variables (data structure)
 let obstacleArray = [];
@@ -19,6 +20,8 @@ let spawnTime = 300;
 let moveTime = 200;
 let gameOver = false;
 
+// Setting the initial High score value
+highScore.innerHTML = `High Score:${JSON.parse(localStorage.getItem("score")) || 0}`
 
 // Defining the Initial position of the player to let js read and compare it's values
 player.style.top = "80%";
@@ -121,6 +124,12 @@ function detectCollision() {
             gameOver = true;
             alert(`Game Over! \n:-(\nScore:${score}`);
             window.location.reload();
+
+            // updating the high score
+            let highScore = JSON.parse(localStorage.getItem("score")) || "";
+            if (highScore < score){
+                localStorage.setItem("score", JSON.stringify(score))
+            }
         }
 
         
