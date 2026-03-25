@@ -5,6 +5,8 @@ let body = document.querySelector("body")
 let board = document.querySelector("#container");
 let player = document.querySelector("#player");
 
+let obstacleArray = [];
+
 let lane = 1;
 let laneLeft = 15;
 
@@ -36,3 +38,27 @@ body.addEventListener('keydown', (e)=>{
         }, jumpTime)
     }
 })
+
+// Adding Obstacles
+function makeObstacles() {
+
+    let lane = Math.ceil(Math.random() * 3);
+
+    let obstacle = document.createElement("div");
+    obstacle.className = "obstacle";
+
+    obstacle.style.top = "10%";
+
+    if (lane == 1){
+        obstacle.style.left = "15%";
+    } else if ( lane == 2){
+        obstacle.style.left = "45%";
+    } else {
+        obstacle.style.left = "75%";
+    }
+
+    board.appendChild(obstacle);
+    obstacleArray.push(obstacle);
+}
+
+// Removing the Obstacles

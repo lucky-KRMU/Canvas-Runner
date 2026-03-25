@@ -56,8 +56,7 @@ body {
     height: var(--player-size);
     width: var(--player-size);
     background: #bb3b3b;
-    margin: auto;
-    grid-row: 1;
     transition-duration: 200ms;
+    position: absolute;
     border: 2px solid green;
 }
