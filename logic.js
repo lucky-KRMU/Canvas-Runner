@@ -12,7 +12,9 @@ let obstaclePositionArray = [];
 // auxiliary variables
 let lane = 1;
 let laneLeft = 15;
-let jumpTime = 200;
+let jumpTime = 400;
+let spawnTime = 300;
+let moveTime = 200;
 let gameOver = false;
 
 
@@ -125,10 +127,13 @@ function detectCollision() {
 }
 
 // Game Loop
-setInterval(()=>{
 
+setInterval(()=>{
     // Adding obstacles
     makeObstacles();
+}, spawnTime)
+
+setInterval(()=>{
 
     // Moving obstacles
     moveObstacles();
@@ -139,4 +144,4 @@ setInterval(()=>{
     // Detecting Collisions
     detectCollision();
 
-}, 1000);
+}, moveTime);
