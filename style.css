@@ -34,16 +34,22 @@ body {
     box-shadow: 2px 2px 2px black;
     transform: rotateX(60deg);
     transform-style: preserve-3d;
+    /* display: flex;
+    justify-content: baseline;
+    align-items: baseline; */
 }
 
 #player {
     height: var(--player-size);
     width: var(--player-size);
     background: #000;
-    margin: auto;
-    grid-column: 2;
-    grid-row: 6;
+    /* margin: auto; */
     transition-duration: 200ms;
+    /* align-self: baseline; */
+    position: relative;
+    top: 80%;
+    left: 15%;
+    /* Addition of 30% to shift the lane */
 }
 
 .obstacle {
