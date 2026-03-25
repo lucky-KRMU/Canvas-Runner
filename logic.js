@@ -6,6 +6,7 @@ let board = document.querySelector("#container");
 let player = document.querySelector("#player");
 
 let obstacleArray = [];
+let obstaclePositionArray = [];
 
 let lane = 1;
 let laneLeft = 15;
@@ -59,6 +60,14 @@ function makeObstacles() {
 
     board.appendChild(obstacle);
     obstacleArray.push(obstacle);
+    obstaclePositionArray.push(10);
 }
 
-// Removing the Obstacles
+// Moving the obstacle
+function moveObstacles() {
+    obstacleArray.forEach( (obstacle, index) =>{
+        obstaclePositionArray[index] += 10;
+        let position = obstaclePositionArray[index]
+        obstacle.style.top = `${position}%`
+    })
+}
