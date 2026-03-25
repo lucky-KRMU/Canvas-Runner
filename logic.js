@@ -4,12 +4,14 @@
 let body = document.querySelector("body")
 let board = document.querySelector("#container");
 let player = document.querySelector("#player");
+let scoreTag = document.getElementById("score");
 
 // Obstacle Variables (data structure)
 let obstacleArray = [];
 let obstaclePositionArray = [];
 
 // auxiliary variables
+let score = 0;
 let lane = 1;
 let laneLeft = 15;
 let jumpTime = 400;
@@ -117,7 +119,7 @@ function detectCollision() {
 
         if (obsX == playerX && obsY >= playerY && obsZ == playerZ){
             gameOver = true;
-            alert("Game Over");
+            alert(`Game Over! \n:-(\nScore:${score}`);
             window.location.reload();
         }
 
@@ -126,13 +128,19 @@ function detectCollision() {
     })
 }
 
-// Game Loop
+// To update the score
+function updateScore() {
+    scoreTag.innerText = `Score: ${score}`
+}
 
+// Game Loop
+// Loop to make the obstacles
 setInterval(()=>{
     // Adding obstacles
     makeObstacles();
 }, spawnTime)
 
+// loop to do operations/mechanics of the obstacles
 setInterval(()=>{
 
     // Moving obstacles
@@ -143,5 +151,9 @@ setInterval(()=>{
 
     // Detecting Collisions
     detectCollision();
+
+    //updating the score
+    score += 1;
+    updateScore();
 
 }, moveTime);

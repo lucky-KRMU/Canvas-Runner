@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&display=swap');
+
 :root {
     --player-size: 10vmin;
 }
@@ -59,4 +61,14 @@ body {
     transition-duration: 200ms;
     position: absolute;
     border: 2px solid green;
+}
+
+#score {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    font-size: 5vmin;
+    font-weight: 900;
+    font-family: datatype, 'Courier New', Courier, monospace;
+    color: blue;
 }
