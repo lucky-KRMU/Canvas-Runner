@@ -88,3 +88,25 @@ body {
     font-family: datatype, 'Courier New', Courier, monospace;
     color: white;
 }
+
+.coin{
+    height: var(--player-size);
+    width: var(--player-size);
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    background-color: yellow;
+    border: 2px solid rgb(150, 150, 3);
+    transform: rotateX(90deg) translateY(calc(var(--player-size)/2));
+    border-radius: 100%;
+    animation: coinRotate 1s infinite ease-in-out;
+}
+
+@keyframes coinRotate {
+    0%{
+        transform: rotateX(90deg) rotateY(0deg) translateY(calc(var(--player-size)/2));
+    }
+    100%{
+        transform: rotateX(90deg) rotateY(360deg) translateY(calc(var(--player-size)/2));
+    }
+}

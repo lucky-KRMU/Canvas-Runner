@@ -11,6 +11,10 @@ let highScore = document.querySelector("#highScore");
 let obstacleArray = [];
 let obstaclePositionArray = [];
 
+// Coin Variables (data structure)
+let coinArray = [];
+let coinPositionArray = [];
+
 // auxiliary variables
 let score = 0;
 let lane = 2;
@@ -28,27 +32,27 @@ player.style.top = "80%";
 player.style.left = "45%";
 
 // Player Mechanics
-body.addEventListener('keydown', (e)=>{
-    
+body.addEventListener('keydown', (e) => {
+
     // Changing the Lane
-    if (e.key === "ArrowRight" && lane < 3){
+    if (e.key === "ArrowRight" && lane < 3) {
         // Changing/Updating the lane, left of the player and it's position
         lane += 1;
         laneLeft += 30;
         player.style.left = `${laneLeft}%`;
-    } else if (e.key === "ArrowLeft" && lane > 1){
+    } else if (e.key === "ArrowLeft" && lane > 1) {
         // Changing/Updating the lane, left of the player and it's position
         lane -= 1;
         laneLeft -= 30;
         player.style.left = `${laneLeft}%`;
     }
 
-    if (e.key === "ArrowUp"){
+    if (e.key === "ArrowUp") {
         // Making the player jump 
         player.style.transform = "translateZ(10vh)";
-        
+
         // Making the player return to it's original position
-        setTimeout(()=>{
+        setTimeout(() => {
             player.style.transform = "";
         }, jumpTime)
     }
@@ -64,9 +68,9 @@ function makeObstacles() {
 
     obstacle.style.top = "10%";
 
-    if (lane == 1){
+    if (lane == 1) {
         obstacle.style.left = "15%";
-    } else if ( lane == 2){
+    } else if (lane == 2) {
         obstacle.style.left = "45%";
     } else {
         obstacle.style.left = "75%";
@@ -79,7 +83,7 @@ function makeObstacles() {
 
 // Moving the obstacle
 function moveObstacles() {
-    obstacleArray.forEach( (obstacle, index) =>{
+    obstacleArray.forEach((obstacle, index) => {
         obstaclePositionArray[index] += 10;
         let position = obstaclePositionArray[index]
         obstacle.style.top = `${position}%`
@@ -88,7 +92,7 @@ function moveObstacles() {
 
 // Removing the obstacles After leaving the board
 function removeObstacles() {
-    obstacleArray.forEach((obstacle, index)=>{
+    obstacleArray.forEach((obstacle, index) => {
         if (obstacle.style.top === "90%") {
             board.removeChild(obstacle);
             obstacleArray.splice(index, 1);
@@ -99,7 +103,7 @@ function removeObstacles() {
 
 // Function to detect collisions
 function detectCollision() {
-    obstacleArray.forEach(obstacle=>{
+    obstacleArray.forEach(obstacle => {
         // Method 1
         // let obsX = Math.round(obstacle.getBoundingClientRect().left);
         // let obsY = Math.round(obstacle.getBoundingClientRect().top);
@@ -120,49 +124,72 @@ function detectCollision() {
         let playerY = player.style.top;
         let playerZ = player.style.transform;
 
-        if (obsX == playerX && obsY >= playerY && obsZ == playerZ){
+        if (obsX == playerX && obsY >= playerY && obsZ == playerZ) {
             gameOver = true;
             alert(`Game Over! \n:-(\nScore:${score}`);
             window.location.reload();
 
             // updating the high score
             let highScore = JSON.parse(localStorage.getItem("score")) || "";
-            if (highScore < score){
+            if (highScore < score) {
                 localStorage.setItem("score", JSON.stringify(score))
             }
         }
 
-        
+
         // The problem with the collision was that we were using Method 2, It used CSS properties for collision. But JS didn't read the CSS properties from CSS file initially. hence we gave that manually in JS. Now it's working
     })
 }
 
-// To update the score
-function updateScore() {
-    scoreTag.innerText = `Score: ${score}`
+// Function to make Coin
+function makeCoin() {
+    let coin = document.createElement("div");
+    coin.className = "coin";
+
+    let lane = Math.ceil(Math.random()*3);
+
+    if (lane == 1){
+        coin.left = "15%";
+    } else if (lane == 2){
+        coin.left = "45%";
+    } else {
+        coin.left = "75%";
+    }
+    
+    coin.top = "10%";
+
+    board.appendChild(coin);
+    coinArray.push(coin);
+    coinPositionArray.push(0);
+
 }
 
-// Game Loop
-// Loop to make the obstacles
-setInterval(()=>{
-    // Adding obstacles
-    makeObstacles();
-}, spawnTime)
+// To update the score
+// function updateScore() {
+//     scoreTag.innerText = `Score: ${score}`
+// }
 
-// loop to do operations/mechanics of the obstacles
-setInterval(()=>{
+// // Game Loop
+// // Loop to make the obstacles
+// setInterval(()=>{
+//     // Adding obstacles
+//     makeObstacles();
+// }, spawnTime)
 
-    // Moving obstacles
-    moveObstacles();
+// // loop to do operations/mechanics of the obstacles
+// setInterval(()=>{
 
-    // Removing obstacles after leaving the board
-    removeObstacles();
+//     // Moving obstacles
+//     moveObstacles();
 
-    // Detecting Collisions
-    detectCollision();
+//     // Removing obstacles after leaving the board
+//     removeObstacles();
 
-    //updating the score
-    score += 1;
-    updateScore();
+//     // Detecting Collisions
+//     detectCollision();
 
-}, moveTime);
+//     //updating the score
+//     score += 1;
+//     updateScore();
+
+// }, moveTime);
