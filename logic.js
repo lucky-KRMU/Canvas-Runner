@@ -144,25 +144,25 @@ function updateScore() {
 
 // Game Loop
 // Loop to make the obstacles
-// setInterval(()=>{
-//     // Adding obstacles
-//     makeObstacles();
-// }, spawnTime)
+setInterval(()=>{
+    // Adding obstacles
+    makeObstacles();
+}, spawnTime)
 
-// // loop to do operations/mechanics of the obstacles
-// setInterval(()=>{
+// loop to do operations/mechanics of the obstacles
+setInterval(()=>{
 
-//     // Moving obstacles
-//     moveObstacles();
+    // Moving obstacles
+    moveObstacles();
 
-//     // Removing obstacles after leaving the board
-//     removeObstacles();
+    // Removing obstacles after leaving the board
+    removeObstacles();
 
-//     // Detecting Collisions
-//     detectCollision();
+    // Detecting Collisions
+    detectCollision();
 
-//     //updating the score
-//     score += 1;
-//     updateScore();
+    //updating the score
+    score += 1;
+    updateScore();
 
-// }, moveTime);
+}, moveTime);
