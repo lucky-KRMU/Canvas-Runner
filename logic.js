@@ -13,8 +13,8 @@ let obstaclePositionArray = [];
 
 // auxiliary variables
 let score = 0;
-let lane = 1;
-let laneLeft = 15;
+let lane = 2;
+let laneLeft = 45;
 let jumpTime = 400;
 let spawnTime = 300;
 let moveTime = 200;
@@ -25,7 +25,7 @@ highScore.innerHTML = `High Score:${JSON.parse(localStorage.getItem("score")) ||
 
 // Defining the Initial position of the player to let js read and compare it's values
 player.style.top = "80%";
-player.style.left = "15%";
+player.style.left = "45%";
 
 // Player Mechanics
 body.addEventListener('keydown', (e)=>{
