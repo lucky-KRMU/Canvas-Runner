@@ -11,8 +11,10 @@
 
 body {
     /* background-color: skyblue; */
-    background: linear-gradient(black,red,pink,plum);
+    /* background: linear-gradient(black,red,pink,plum); */
     /* background: linear-gradient(black,red,pink,plum,red,black); */
+    background: url("bg2.jpg");
+    background-size: cover;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -38,7 +40,7 @@ body {
     box-shadow: 2px 2px 2px black;
     transform: rotateX(60deg);
     transform-style: preserve-3d;
-    background-color: darkolivegreen;
+    background-color: #1702d9;
     /* display: flex;
     justify-content: baseline;
     align-items: baseline; */
