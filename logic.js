@@ -149,20 +149,31 @@ function makeCoin() {
     let lane = Math.ceil(Math.random()*3);
 
     if (lane == 1){
-        coin.left = "15%";
+        coin.style.left = "15%";
     } else if (lane == 2){
-        coin.left = "45%";
+        coin.style.left = "45%";
     } else {
-        coin.left = "75%";
+        coin.style.left = "75%";
     }
     
-    coin.top = "10%";
+    coin.style.top = "10%";
 
     board.appendChild(coin);
     coinArray.push(coin);
     coinPositionArray.push(0);
 
 }
+
+// Function to move Coin
+function moveCoin() {
+    coinArray.forEach((coin, index)=>{
+        coinPositionArray[index] += 10
+        let position = coinPositionArray[index];
+        coin.style.top = `${position}%`;
+    })
+}
+
+
 
 // To update the score
 // function updateScore() {
