@@ -184,32 +184,65 @@ function removeCoin() {
     })
 }
 
+// Function to Detect collision of coin and the player
+function coinCollision() {
+    coinArray.forEach(coin=>{
+        
+        let coinX = coin.style.top;
+        let coinY = coin.style.left;
+
+        let playerX = player.style.top;
+        let playerY = player.style.left;
+
+        if (coinX == playerX && coinY == playerY){
+            score += 25 // increasing the score with 25 when hit with coin
+        }
+
+    })
+}
+
 // To update the score
-// function updateScore() {
-//     scoreTag.innerText = `Score: ${score}`
-// }
+function updateScore() {
+    scoreTag.innerText = `Score: ${score}`
+}
 
-// // Game Loop
-// // Loop to make the obstacles
-// setInterval(()=>{
-//     // Adding obstacles
-//     makeObstacles();
-// }, spawnTime)
+// Game Loop
+// Loop to make the obstacles
+setInterval(()=>{
+    // Adding obstacles
+    makeObstacles();
+}, spawnTime)
 
-// // loop to do operations/mechanics of the obstacles
-// setInterval(()=>{
+// Loop to spawn the coins
+setInterval(()=>{
+    // Adding Coins
+    makeCoin();
+}, (spawnTime*10))
 
-//     // Moving obstacles
-//     moveObstacles();
+// loop to do operations/mechanics of the obstacles
+setInterval(()=>{
 
-//     // Removing obstacles after leaving the board
-//     removeObstacles();
+    // Moving obstacles
+    moveObstacles();
 
-//     // Detecting Collisions
-//     detectCollision();
+    // Removing obstacles after leaving the board
+    removeObstacles();
 
-//     //updating the score
-//     score += 1;
-//     updateScore();
+    // Detecting Collisions
+    detectCollision();
+    
+    // Moving Coins
+    moveCoin();
 
-// }, moveTime);
+    // Removing Coins after leaving the board
+    removeCoin();
+
+    // Detecting Coins
+    coinCollision();
+
+
+    //updating the score
+    score += 1;
+    updateScore();
+
+}, moveTime);
