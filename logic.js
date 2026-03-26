@@ -173,7 +173,16 @@ function moveCoin() {
     })
 }
 
-
+// Function to remove Coin
+function removeCoin() {
+    coinArray.forEach((coin,index)=>{
+        if (coin.style.top == "90%"){
+            board.removeChild(coin);
+            coinArray.splice(index, 1);
+            coinPositionArray.splice(index, 1);
+        }
+    })
+}
 
 // To update the score
 // function updateScore() {
